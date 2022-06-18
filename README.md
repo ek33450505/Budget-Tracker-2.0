@@ -23,9 +23,12 @@ THEN the deposits or expenses added while they were offline are added to their t
 
   ## Installation: 
 
-  This application is deployed with Heroku at:
+  This application is deployed with Heroku at: 
  
   ## Visualization:
+
+  ![Screenshot 2022-06-17 200943](https://user-images.githubusercontent.com/97137083/174414323-d4965010-229a-4d9d-9714-929ac7ad0f1b.png)
+
 
   ## License: 
 
@@ -37,7 +40,7 @@ THEN the deposits or expenses added while they were offline are added to their t
 
   ## Tests:
   
-  You may test this application in your browser by using the deployment link.
+  You may test this application in your browser by using the deployment link. Open chrome development tools and change the network status to offline. After creating a transaction or two, change the network status back to online and your information will be saved to the database.
 
   ## Contact:
 
