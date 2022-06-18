@@ -17,8 +17,7 @@ request.onsuccess = function(event) {
   
     // check if app is online, if yes run uploadBudget() function to send all local db data to api
     if (navigator.onLine) {
-      // we haven't created this yet, but we will soon, so let's comment it out for now
-      // uploadBudget();
+      uploadBudget();
     }
   };
   
@@ -41,19 +40,19 @@ function saveRecord(record) {
 
   function uploadBudget() {
     // open a transaction on your db
-    const transaction =db.transaction(['new_budget'], 'rewrite');
+    const transaction = db.transaction(['new_budget'], 'readwrite');
 
     // access your object store
-    const budgetObjectStore = transaction.objectStore('new-budget');
+    const budgetObjectStore = transaction.objectStore('new_budget');
 
     // get all records from store and set to a variable
     const getAll = budgetObjectStore.getAll();
 
     // upon a successful .getAll() execution, run this function
-    getAll.onsuccess = function() {
+    getAll.onsuccess = function () {
         // if there was data in indexedDb's store, let's send it to the api server
         if (getAll.result.length > 0) {
-            fetch('/api/transaction', {
+            fetch('/api/transaction/bulk', {
                 method: 'POST',
                 body: JSON.stringify(getAll.result),
                 headers: {
